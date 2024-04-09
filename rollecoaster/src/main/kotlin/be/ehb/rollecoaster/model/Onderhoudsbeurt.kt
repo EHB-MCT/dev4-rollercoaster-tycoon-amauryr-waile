@@ -13,7 +13,7 @@ data class Onderhoudsbeurt(
     @GeneratedValue
     val id: Long?,
     val datum: LocalDate,
-    val opgelost: Boolean,
+    var opgelost: Boolean,
     @ManyToOne
     @JoinColumn(name="attractie_id")
     val attractie: Attractie
