@@ -12,7 +12,7 @@ data class Categorie(
     @Id
     @GeneratedValue
     val id: Long?,
-    val naam: String,
+    var naam: String,
     @OneToMany(mappedBy = "categorie")
     val attracties: List<Attractie>
 
