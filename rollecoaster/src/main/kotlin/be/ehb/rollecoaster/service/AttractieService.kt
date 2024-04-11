@@ -10,5 +10,18 @@ class AttractieService(private val attractieRepository: AttractieRepository) {
 
     fun addAttractie(attractie: Attractie): Attractie = attractieRepository.save(attractie)
 
-    // andere methoden zoals updateAttractie, deleteAttractie, etc.
+    fun updateAttractie(id: Long, updatedAttractie: Attractie): Attractie? {
+        val existingAttractie = attractieRepository.findById(id)
+        if (existingAttractie.isPresent) {
+            val attractie = existingAttractie.get()
+            attractie.naam = updatedAttractie.naam
+            attractie.categorie = updatedAttractie.categorie
+            return attractieRepository.save(attractie)
+        }
+        return null
+    }
+
+    fun deleteAttractie(id: Long) {
+        attractieRepository.deleteById(id)
+    }
 }

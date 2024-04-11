@@ -23,7 +23,7 @@ class OnderhoudsbeurtService(private val onderhoudsbeurtRepository: Onderhoudsbe
     fun getAllOnderhoudsbeurten(): List<Onderhoudsbeurt> = onderhoudsbeurtRepository.findAll()
 
     fun getOnderhoudsbeurtenForAttractie(attractieId: Long): List<Onderhoudsbeurt> =
-        onderhoudsbeurtRepository.findByAttractieId(attractieId)
+            onderhoudsbeurtRepository.findByAttractieId(attractieId)
 
     fun getOnderhoudsbeurtenForAttractieInPanne(attractieId: Long): List<Onderhoudsbeurt> =
         onderhoudsbeurtRepository.findByAttractieIdAndOpgelostFalse(attractieId)

@@ -11,15 +11,15 @@ import jakarta.persistence.OneToMany
 data class Attractie(
     @Id
     @GeneratedValue
-    val id: Long?,
-    val naam: String,
-    val categorie: String,
+    val id: Int?,
+    var naam: String,
+    var categorie: String,
     val capaciteit: Int,
     val bouwjaar: Int,
     val afbeeldingUrl: String,
     val onrideVideoUrl: String?,
     val lengte: Double,
     val tijdsduur: Double,
-    @OneToMany(mappedBy = "attractie", cascade = [CascadeType.ALL])
-    val onderhoudsbeurten: List<Onderhoudsbeurt>
+    //@OneToMany(mappedBy = "attractie", cascade = [CascadeType.ALL])
+    //val onderhoudsbeurten: List<Onderhoudsbeurt>
 )
