@@ -32,6 +32,13 @@ class AttractieController(private val attractieService: AttractieService) {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deleteAttractie(@PathVariable id: Long) {
         attractieService.deleteAttractie(id)
+        /**   val categorie = categorieService.getCategorieById(id)
+        val attractionsConnected = categorie?.attractions?.size ?: 0
+        if (attractionsConnected > 0) {
+        throw ResponseStatusException(HttpStatus.BAD_REQUEST, "This category is still associated with attractions and cannot be deleted.")
+        } else {
+        categorieService.deleteCategorie(id)
+        }*/
     }
 
 

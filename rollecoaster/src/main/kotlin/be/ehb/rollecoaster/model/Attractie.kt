@@ -20,6 +20,8 @@ data class Attractie(
     val onrideVideoUrl: String?,
     val lengte: Double,
     val tijdsduur: Double,
+    val maximumHoogte : Double,
+    val MaximumSnelheid : Double
     //@OneToMany(mappedBy = "attractie", cascade = [CascadeType.ALL])
     //val onderhoudsbeurten: List<Onderhoudsbeurt>
 )
