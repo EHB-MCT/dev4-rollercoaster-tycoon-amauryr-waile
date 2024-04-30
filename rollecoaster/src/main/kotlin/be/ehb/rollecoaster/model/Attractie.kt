@@ -15,13 +15,13 @@ data class Attractie(
     var naam: String,
     var categorie: String,
     val capaciteit: Int,
-    val bouwjaar: Int,
+    /*val bouwjaar: Int,
     val afbeeldingUrl: String,
     val onrideVideoUrl: String?,
     val lengte: Double,
     val tijdsduur: Double,
     val maximumHoogte : Double,
-    val MaximumSnelheid : Double
+    val MaximumSnelheid : Double*/
     //@OneToMany(mappedBy = "attractie", cascade = [CascadeType.ALL])
     //val onderhoudsbeurten: List<Onderhoudsbeurt>
 )
