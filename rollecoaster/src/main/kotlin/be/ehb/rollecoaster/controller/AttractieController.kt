@@ -2,6 +2,7 @@ package be.ehb.rollecoaster.controller
 
 
 
+import be.ehb.rollecoaster.dto.AttractieRequest
 import be.ehb.rollecoaster.model.Attractie
 import be.ehb.rollecoaster.service.AttractieService
 import org.springframework.http.HttpStatus
@@ -19,7 +20,7 @@ class AttractieController(private val attractieService: AttractieService) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun addAttractie(@RequestBody attractie: Attractie): Attractie {
+    fun addAttractie(@RequestBody attractie: AttractieRequest): AttractieRequest {
         return attractieService.addAttractie(attractie)
     }
 

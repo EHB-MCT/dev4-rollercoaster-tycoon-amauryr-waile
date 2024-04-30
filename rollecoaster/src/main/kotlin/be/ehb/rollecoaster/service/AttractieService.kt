@@ -1,5 +1,6 @@
 package be.ehb.rollecoaster.service
 
+import be.ehb.rollecoaster.dto.AttractieRequest
 import be.ehb.rollecoaster.model.Attractie
 import be.ehb.rollecoaster.repository.AttractieRepository
 import org.springframework.stereotype.Service
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Service
 class AttractieService(private val attractieRepository: AttractieRepository) {
     fun getAllAttracties(): List<Attractie> = attractieRepository.findAll()
 
-    fun addAttractie(attractie: Attractie): Attractie = attractieRepository.save(attractie)
+    fun addAttractie(attractie: AttractieRequest): AttractieRequest = attractieRepository.save(attractie)
 
     fun updateAttractie(id: Long, updatedAttractie: Attractie): Attractie? {
         val existingAttractie = attractieRepository.findById(id)

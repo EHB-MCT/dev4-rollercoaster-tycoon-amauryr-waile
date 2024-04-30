@@ -1,27 +1,22 @@
 package be.ehb.rollecoaster.model
 
-import jakarta.persistence.CascadeType
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.Id
-import jakarta.persistence.OneToMany
+import Categorie
+import jakarta.persistence.*
 
 
 @Entity
 data class Attractie(
-    @Id
-    @GeneratedValue
-    val id: Int?,
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long?,
     var naam: String,
-    var categorie: String,
+    @ManyToOne @JoinColumn(name = "categories_id") var categorie: Categorie,
     val capaciteit: Int,
-    /*val bouwjaar: Int,
+    val bouwjaar: Int,
     val afbeeldingUrl: String,
     val onrideVideoUrl: String?,
     val lengte: Double,
     val tijdsduur: Double,
-    val maximumHoogte : Double,
-    val MaximumSnelheid : Double*/
-    //@OneToMany(mappedBy = "attractie", cascade = [CascadeType.ALL])
-    //val onderhoudsbeurten: List<Onderhoudsbeurt>
+    val maximumHoogte: Double,
+    val maximumSnelheid: Double,
+    @OneToMany(mappedBy = "attractie") val onderhoudsbeurten: List<Onderhoud> = mutableListOf()
 )

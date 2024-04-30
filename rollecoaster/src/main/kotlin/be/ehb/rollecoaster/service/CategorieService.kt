@@ -1,6 +1,6 @@
 package be.ehb.rollecoaster.service
 
-import be.ehb.rollecoaster.model.Categorie
+import Categorie
 import be.ehb.rollecoaster.repository.CategorieRepository
 
 

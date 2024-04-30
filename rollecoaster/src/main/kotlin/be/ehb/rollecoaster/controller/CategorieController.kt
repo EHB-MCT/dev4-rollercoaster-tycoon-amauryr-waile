@@ -1,6 +1,6 @@
 package be.ehb.rollecoaster.controller
 
-import be.ehb.rollecoaster.model.Categorie
+import Categorie
 import be.ehb.rollecoaster.service.CategorieService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
