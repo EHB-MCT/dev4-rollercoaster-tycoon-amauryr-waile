@@ -2,11 +2,14 @@ package be.ehb.rollecoaster.service
 
 import be.ehb.rollecoaster.model.Onderhoud
 import be.ehb.rollecoaster.repository.OnderhoudRepository
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.time.LocalDate
 
 @Service
-class OnderhoudService(private val onderhoudRepository: OnderhoudRepository) {
+class OnderhoudService {
+
+    @Autowired lateinit var onderhoudRepository: OnderhoudRepository
     fun addOnderhoud(onderhoud: Onderhoud): Onderhoud = onderhoudRepository.save(onderhoud)
 
     fun markOnderhoudAsResolved(id: Long) {

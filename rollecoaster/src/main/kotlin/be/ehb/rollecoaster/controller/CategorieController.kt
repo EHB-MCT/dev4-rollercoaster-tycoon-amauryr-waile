@@ -1,7 +1,9 @@
 package be.ehb.rollecoaster.controller
 
-import Categorie
+
+import be.ehb.rollecoaster.model.Categorie
 import be.ehb.rollecoaster.service.CategorieService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -16,7 +18,9 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/categories")
-class CategorieController(private val categorieService: CategorieService) {
+class CategorieController {
+
+    @Autowired lateinit var categorieService: CategorieService
     @GetMapping
     fun getAllCategories(): List<Categorie> {
         return categorieService.getAllCategories()

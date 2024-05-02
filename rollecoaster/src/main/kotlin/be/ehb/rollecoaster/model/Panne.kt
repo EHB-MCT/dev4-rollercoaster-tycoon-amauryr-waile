@@ -8,14 +8,15 @@ import jakarta.persistence.ManyToMany
 import java.util.Date
 
 
-@Entity
+//@Entity
 data class Panne(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long?,
-    val description:String,
-    val beginDate: Date,
-    val endDate: Date,
-    @ManyToMany(mappedBy = "pannes")
-    val attractions: List<Attractie> = mutableListOf()
+    var description:String,
+    var beginDate: Date,
+    var endDate: Date,
+    //@ManyToMany(mappedBy = "pannes")
+    //var attractions: List<Attractie> = mutableListOf()
 
-) {
-}
+
+)
+{}

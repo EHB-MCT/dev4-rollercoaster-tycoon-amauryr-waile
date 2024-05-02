@@ -1,6 +1,7 @@
 package be.ehb.rollecoaster.repository
 
-import Categorie
+
+import be.ehb.rollecoaster.model.Categorie
 
 
 import org.springframework.data.jpa.repository.JpaRepository

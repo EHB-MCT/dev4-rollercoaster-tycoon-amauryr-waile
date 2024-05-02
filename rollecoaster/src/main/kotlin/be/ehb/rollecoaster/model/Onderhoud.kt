@@ -9,10 +9,12 @@ import jakarta.persistence.*
 data class Onderhoud(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long?,
-    val datum: String,
+    var id: Long?,
+    var datum: String,
     var opgelost: Boolean,
+
+){
     @ManyToOne
     @JoinColumn(name="attractieId")
-    val attractie: Attractie
-)
+    lateinit var attractie: Attractie
+}

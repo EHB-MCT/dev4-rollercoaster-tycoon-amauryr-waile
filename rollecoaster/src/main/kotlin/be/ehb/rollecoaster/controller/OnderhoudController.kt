@@ -2,13 +2,15 @@ package be.ehb.rollecoaster.controller
 
 import be.ehb.rollecoaster.model.Onderhoud
 import be.ehb.rollecoaster.service.OnderhoudService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/onderhoud")
-class OnderhoudController(private val onderhoudService: OnderhoudService) {
+class OnderhoudController{
 
+    @Autowired lateinit var onderhoudService: OnderhoudService
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun addOnderhoud(@RequestBody onderhoud: Onderhoud): Onderhoud {
@@ -31,15 +33,8 @@ class OnderhoudController(private val onderhoudService: OnderhoudService) {
         return onderhoudService.getOnderhoudsForAttractie(attractieId)
     }
 
-   /* @GetMapping("/attractie/{attractieId}/panne")
-    fun getOnderhoudsForAttractieInPanne(@PathVariable attractieId: Long): List<Onderhoud> {
-        return onderhoudService.getOnderhoudsForAttractieInPanne(attractieId)
-    }
 
-    @GetMapping("/attractie/{attractieId}/panne/count")
-    fun getNumberOfPannesForAttractie(@PathVariable attractieId: Long): Long {
-        return onderhoudService.getNumberOfPannesForAttractie(attractieId)
-    }
+
 
     @GetMapping("/attractie/{attractieId}/next-maintenance")
     fun getNextMaintenanceDateForAttractie(@PathVariable attractieId: Long): String? {

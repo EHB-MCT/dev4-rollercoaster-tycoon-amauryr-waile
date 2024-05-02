@@ -1,13 +1,17 @@
 package be.ehb.rollecoaster.service
 
-import Categorie
+
+import be.ehb.rollecoaster.model.Categorie
 import be.ehb.rollecoaster.repository.CategorieRepository
+import org.springframework.beans.factory.annotation.Autowired
 
 
 import org.springframework.stereotype.Service
 
 @Service
-class CategorieService(private val categorieRepository: CategorieRepository) {
+class CategorieService {
+
+    @Autowired lateinit var categorieRepository: CategorieRepository
     fun getAllCategories(): List<Categorie> = categorieRepository.findAll()
 
     fun addCategorie(categorie: Categorie): Categorie = categorieRepository.save(categorie)

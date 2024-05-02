@@ -5,12 +5,16 @@ package be.ehb.rollecoaster.controller
 import be.ehb.rollecoaster.dto.AttractieRequest
 import be.ehb.rollecoaster.model.Attractie
 import be.ehb.rollecoaster.service.AttractieService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
+@CrossOrigin
 @RequestMapping("/attracties")
-class AttractieController(private val attractieService: AttractieService) {
+class AttractieController {
+
+    @Autowired lateinit var attractieService: AttractieService
 
     @GetMapping
     fun getAllAttracties(): List<Attractie> {
