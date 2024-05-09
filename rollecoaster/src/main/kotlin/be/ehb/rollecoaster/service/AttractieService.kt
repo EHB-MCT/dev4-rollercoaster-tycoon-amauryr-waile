@@ -16,6 +16,7 @@ class AttractieService {
 
     fun getAllAttracties(): List<Attractie> = attractieRepository.findAll()
 
+
     fun addAttractie(attractie: AttractieRequest): AttractieRequest = attractieRepository.save(attractie)
 
     fun updateAttractie(id: Long, updatedAttractie: Attractie): Attractie? {

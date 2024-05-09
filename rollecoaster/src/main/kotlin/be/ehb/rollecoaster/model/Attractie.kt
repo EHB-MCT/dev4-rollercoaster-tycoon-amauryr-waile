@@ -21,7 +21,9 @@
         var maximumHoogte: Double,
         var maximumSnelheid: Double,
         @OneToMany(mappedBy = "attractie")
-        open var onderhoudsbeurten: List<Onderhoud> = mutableListOf()
+        open var onderhoudsbeurten: List<Onderhoud> = mutableListOf(),
+        @OneToMany(mappedBy = "attractie")
+        var pannes: List<Panne> = mutableListOf()
     ){
 
         @ManyToOne

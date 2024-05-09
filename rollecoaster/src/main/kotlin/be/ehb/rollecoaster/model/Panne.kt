@@ -1,21 +1,23 @@
 package be.ehb.rollecoaster.model
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.ManyToMany
+import be.ehb.rollecoaster.model.Attractie
+import jakarta.persistence.*
 import java.util.Date
 
 
-//@Entity
+@Entity
 data class Panne(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long?,
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    val id: Long?,
     var description:String,
     var beginDate: Date,
     var endDate: Date,
-    //@ManyToMany(mappedBy = "pannes")
-    //var attractions: List<Attractie> = mutableListOf()
+    var resolved: Boolean,
+    val attractieId: Long,
+    @ManyToOne()
+    @JoinColumn(name = "attractieId", insertable = false, updatable = false)
+    var attractie: Attractie?
 
 
 )

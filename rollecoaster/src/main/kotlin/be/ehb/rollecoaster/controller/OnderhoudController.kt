@@ -36,9 +36,9 @@ class OnderhoudController{
 
 
 
-    @GetMapping("/attractie/{attractieId}/next-maintenance")
+    /*@GetMapping("/attractie/{attractieId}/next-maintenance")
     fun getNextMaintenanceDateForAttractie(@PathVariable attractieId: Long): String? {
         val nextMaintenanceDate = onderhoudService.getNextMaintenanceDateForAttractie(attractieId)
         return nextMaintenanceDate?.toString()*/
-    //}
+    //}*\
 }
