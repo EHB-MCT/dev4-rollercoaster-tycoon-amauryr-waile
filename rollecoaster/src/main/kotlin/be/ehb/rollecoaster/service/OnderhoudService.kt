@@ -1,5 +1,6 @@
 package be.ehb.rollecoaster.service
 
+import be.ehb.rollecoaster.dto.OnderhoudRequest
 import be.ehb.rollecoaster.model.Onderhoud
 import be.ehb.rollecoaster.repository.OnderhoudRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -10,7 +11,16 @@ import java.time.LocalDate
 class OnderhoudService {
 
     @Autowired lateinit var onderhoudRepository: OnderhoudRepository
-    fun addOnderhoud(onderhoud: Onderhoud): Onderhoud = onderhoudRepository.save(onderhoud)
+    fun addOnderhoud(onderhoud: OnderhoudRequest): Onderhoud {
+        val nieuweOnderhoud = Onderhoud(
+            id = null,
+            datum = onderhoud.datum,
+            opgelost = onderhoud.opgelost,
+            attractieId = onderhoud.attractieId
+        )
+        return onderhoudRepository.save(nieuweOnderhoud)
+    }
+
 
     fun markOnderhoudAsResolved(id: Long) {
         val onderhoud = onderhoudRepository.findById(id)
@@ -31,6 +41,6 @@ class OnderhoudService {
     /*fun getNumberOfPannesForAttractie(attractieId: Long): Long =
         onderhoudRepository.countByAttractieIdAndOpgelostFalse(attractieId)*/
 
-   /* fun getNextMaintenanceDateForAttractie(attractieId: Long): LocalDate? =
-        onderhoudRepository.findNextByDatum(attractieId: Long)?.datum*/
+    fun getNextOnderhoudForAttractie (attractieId: Long): LocalDate? =
+        onderhoudRepository.findNextByDatum(attractieId)?.datum
 }

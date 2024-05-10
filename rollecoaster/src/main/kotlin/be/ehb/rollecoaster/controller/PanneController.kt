@@ -2,6 +2,7 @@ package be.ehb.rollecoaster.controller
 
 
 
+import be.ehb.rollecoaster.dto.PanneRequest
 import be.ehb.rollecoaster.model.Panne
 import be.ehb.rollecoaster.service.PanneService
 import org.springframework.beans.factory.annotation.Autowired
@@ -10,18 +11,16 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/panne")
-class Panne {
+class PanneController {
 
-    @RestController
-    @RequestMapping("/panne")
-    class PanneController {
+
 
         @Autowired
         lateinit var panneService: PanneService
 
-        @PostMapping
+        @PostMapping("/create")
         @ResponseStatus(HttpStatus.CREATED)
-        fun addPanne(@RequestBody panne: Panne): Panne {
+        fun addPanne(@RequestBody panne: PanneRequest): Panne {
             return panneService.addPanne(panne)
         }
 
@@ -31,7 +30,7 @@ class Panne {
             panneService.markPanneAsResolved(id)
         }
 
-        @GetMapping
+        @GetMapping("/all")
         fun getAllActivePannes(): List<Panne> {
             return panneService.getAllActivePannes()
         }
@@ -48,4 +47,4 @@ class Panne {
     }
 
 
-}
+

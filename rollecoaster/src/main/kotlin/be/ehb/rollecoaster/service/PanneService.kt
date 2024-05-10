@@ -1,6 +1,7 @@
 package be.ehb.rollecoaster.service
 
 
+import be.ehb.rollecoaster.dto.PanneRequest
 import be.ehb.rollecoaster.model.Panne
 import be.ehb.rollecoaster.repository.PanneRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -12,8 +13,21 @@ class PanneService {
     @Autowired
     lateinit var panneRepository: PanneRepository
 
-    fun addPanne(panne: Panne): Panne {
-        return panneRepository.save(panne)
+    fun addPanne(panne: PanneRequest): Panne {
+        val newPanne = Panne(
+            id = null,
+            description = panne.description,
+            beginDate = panne.beginDate,
+            endDate = panne.endDate,
+            resolved = false,
+            attractieId = panne.attractieId,
+            attractie = null
+        )
+
+        return panneRepository.save(newPanne)
+
+
+
     }
 
     fun markPanneAsResolved(id: Long) {

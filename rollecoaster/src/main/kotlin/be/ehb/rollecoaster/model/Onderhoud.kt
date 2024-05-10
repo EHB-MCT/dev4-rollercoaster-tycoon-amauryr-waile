@@ -1,6 +1,7 @@
 package be.ehb.rollecoaster.model
 
 import jakarta.persistence.*
+import java.time.LocalDate
 
 //import java.time.LocalDate
 
@@ -10,8 +11,9 @@ data class Onderhoud(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long?,
-    var datum: String,
+    var datum: LocalDate,
     var opgelost: Boolean,
+    var attractieId: Long? = null
 
 ){
     @ManyToOne

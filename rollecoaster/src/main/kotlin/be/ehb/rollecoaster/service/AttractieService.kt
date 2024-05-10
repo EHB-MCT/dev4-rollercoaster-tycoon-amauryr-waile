@@ -3,6 +3,7 @@ package be.ehb.rollecoaster.service
 import be.ehb.rollecoaster.dto.AttractieRequest
 import be.ehb.rollecoaster.model.Attractie
 import be.ehb.rollecoaster.repository.AttractieRepository
+import be.ehb.rollecoaster.repository.PanneRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -10,7 +11,13 @@ import org.springframework.stereotype.Service
 
 class AttractieService {
 
-    @Autowired lateinit var attractieRepository: AttractieRepository
+    @Autowired
+    lateinit var panneRepository: PanneRepository
+
+
+
+    @Autowired
+    lateinit var attractieRepository: AttractieRepository
 
 
 
@@ -30,7 +37,17 @@ class AttractieService {
         return null
     }
 
-    fun deleteAttractie(id: Long) {
-        attractieRepository.deleteById(id)
+    fun deleteAttractie(id: Long): Boolean {
+        return try {
+            attractieRepository.deleteById(id)
+            true
+        } catch (e: Exception) {
+            false
+        }
     }
+
+    fun getNumberOfPannesForAttractie(attractieId: Long): Long {
+        return panneRepository.findByAttractieId(attractieId).size.toLong()
+    }
+
 }
