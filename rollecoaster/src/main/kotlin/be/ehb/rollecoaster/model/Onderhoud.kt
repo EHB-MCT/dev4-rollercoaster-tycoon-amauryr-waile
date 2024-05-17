@@ -3,7 +3,6 @@ package be.ehb.rollecoaster.model
 import jakarta.persistence.*
 import java.time.LocalDate
 
-//import java.time.LocalDate
 
 
 @Entity
@@ -17,6 +16,6 @@ data class Onderhoud(
 
 ){
     @ManyToOne
-    @JoinColumn(name="attractieId")
+    @JoinColumn(name="attractieId", insertable=false, updatable=false)
     lateinit var attractie: Attractie
 }

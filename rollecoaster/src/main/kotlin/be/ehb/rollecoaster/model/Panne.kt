@@ -1,6 +1,6 @@
 package be.ehb.rollecoaster.model
 
-import be.ehb.rollecoaster.model.Attractie
+
 import jakarta.persistence.*
 import java.util.Date
 

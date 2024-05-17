@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
+@CrossOrigin
 @RequestMapping("/panne")
 class PanneController {
 
@@ -18,7 +19,7 @@ class PanneController {
         @Autowired
         lateinit var panneService: PanneService
 
-        @PostMapping("/create")
+        @PostMapping
         @ResponseStatus(HttpStatus.CREATED)
         fun addPanne(@RequestBody panne: PanneRequest): Panne {
             return panneService.addPanne(panne)
@@ -30,7 +31,7 @@ class PanneController {
             panneService.markPanneAsResolved(id)
         }
 
-        @GetMapping("/all")
+        @GetMapping
         fun getAllActivePannes(): List<Panne> {
             return panneService.getAllActivePannes()
         }

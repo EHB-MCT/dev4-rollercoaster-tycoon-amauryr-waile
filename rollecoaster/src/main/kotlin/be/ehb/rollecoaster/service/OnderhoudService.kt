@@ -35,12 +35,6 @@ class OnderhoudService {
     fun getOnderhoudsForAttractie(attractieId: Long): List<Onderhoud> =
         onderhoudRepository.findByAttractieId(attractieId)
 
-    /*fun getOnderhoudsForAttractieInPanne(attractieId: Long): List<Onderhoud> =
-        onderhoudRepository.findByAttractieIdAndOpgelostFalse(attractieId)*/
-
-    /*fun getNumberOfPannesForAttractie(attractieId: Long): Long =
-        onderhoudRepository.countByAttractieIdAndOpgelostFalse(attractieId)*/
-
-    fun getNextOnderhoudForAttractie (attractieId: Long): LocalDate? =
+    fun getNextOnderhoudForAttractie (attractieId: LocalDate): LocalDate? =
         onderhoudRepository.findNextByDatum(attractieId)?.datum
 }

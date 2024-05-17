@@ -1,17 +1,22 @@
     package be.ehb.rollecoaster.model
 
 
-    import be.ehb.rollecoaster.model.Categorie
+
+    import com.fasterxml.jackson.annotation.JsonManagedReference
     import jakarta.persistence.*
 
 
     @Table(name = "attractie")
     @Entity
     data class Attractie(
-        @Id @GeneratedValue
+        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long = -1,
         var naam: String,
 
+        @ManyToOne(fetch = FetchType.EAGER)
+        @JoinColumn(name = "categorie_id")
+        @JsonManagedReference
+        var categorie: Categorie?,
         var capaciteit: Int,
         var bouwjaar: Int,
         var afbeeldingUrl: String,
@@ -20,15 +25,9 @@
         var tijdsduur: Double,
         var maximumHoogte: Double,
         var maximumSnelheid: Double,
-        @OneToMany(mappedBy = "attractie")
-        open var onderhoudsbeurten: List<Onderhoud> = mutableListOf(),
-        @OneToMany(mappedBy = "attractie")
-        var pannes: List<Panne> = mutableListOf()
-    ){
+        @OneToMany(mappedBy = "attractie", cascade = [CascadeType.ALL], orphanRemoval = true)
+        open var onderhoudsbeurten: MutableList<Onderhoud> = mutableListOf(),
 
-        @ManyToOne
-        lateinit var categorie: Categorie
-
-
-
-    }
+        @OneToMany(mappedBy = "attractie", cascade = [CascadeType.ALL], orphanRemoval = true)
+        var pannes: MutableList<Panne> = mutableListOf()
+    ){}

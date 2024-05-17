@@ -5,7 +5,7 @@ import java.util.*
 
 data class AttractieRequest(
     val naam: String,
-    val categorie: String,
+    val categorie: CategorieRequest,
     val capaciteit: Int,
     val bouwjaar: Int,
     val afbeeldingUrl: String,
