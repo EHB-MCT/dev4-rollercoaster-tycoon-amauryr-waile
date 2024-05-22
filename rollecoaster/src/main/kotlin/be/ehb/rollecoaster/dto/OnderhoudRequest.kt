@@ -6,5 +6,5 @@
     data class OnderhoudRequest(
         var datum: LocalDate,
         var opgelost: Boolean,
-        var attractieId: Long
+        var attractieId: Long?
     )

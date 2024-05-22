@@ -13,6 +13,9 @@ data class AttractieRequest(
     val lengte: Double,
     val tijdsduur: Double,
     val maximumHoogte: Double,
-    val maximumSnelheid: Double
+    val maximumSnelheid: Double,
+    val onderhouds: List<OnderhoudRequest> = emptyList(),
+    val pannes: List<PanneRequest> = emptyList(),
+    val resolvedPannesCount: Int
 )
 

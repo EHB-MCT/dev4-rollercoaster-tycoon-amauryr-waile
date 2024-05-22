@@ -42,7 +42,7 @@ class PanneController {
         }
 
         @GetMapping("/overzicht")
-        fun getAllAttractionPannes(): Map<Long, Int> {
+        fun getAllAttractionPannes(): Map<Long?, Int> {
             return panneService.getAllAttractionPannes()
         }
     }

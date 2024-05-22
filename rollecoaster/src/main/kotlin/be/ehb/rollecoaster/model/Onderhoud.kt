@@ -1,5 +1,6 @@
 package be.ehb.rollecoaster.model
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import jakarta.persistence.*
 import java.time.LocalDate
 
@@ -17,5 +18,6 @@ data class Onderhoud(
 ){
     @ManyToOne
     @JoinColumn(name="attractieId", insertable=false, updatable=false)
+    @JsonBackReference
     lateinit var attractie: Attractie
 }

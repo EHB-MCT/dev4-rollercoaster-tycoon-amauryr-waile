@@ -27,6 +27,12 @@
             return attractieService.getAllAttracties()
         }
 
+        @GetMapping("/{id}")
+        fun getAttractieById(@PathVariable id: Long): Attractie? {
+            return attractieService.getAttractieById(id)
+        }
+
+
 
         @PostMapping("/create")
         @ResponseStatus(HttpStatus.CREATED)

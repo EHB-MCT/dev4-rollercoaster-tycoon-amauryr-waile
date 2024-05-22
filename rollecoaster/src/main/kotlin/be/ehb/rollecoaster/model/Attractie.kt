@@ -25,9 +25,12 @@
         var tijdsduur: Double,
         var maximumHoogte: Double,
         var maximumSnelheid: Double,
+        var resolvedPannesCount: Int = 0,
         @OneToMany(mappedBy = "attractie", cascade = [CascadeType.ALL], orphanRemoval = true)
+        @JsonManagedReference
         open var onderhoudsbeurten: MutableList<Onderhoud> = mutableListOf(),
 
+        @JsonManagedReference
         @OneToMany(mappedBy = "attractie", cascade = [CascadeType.ALL], orphanRemoval = true)
         var pannes: MutableList<Panne> = mutableListOf()
     ){}

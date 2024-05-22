@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository
 interface PanneRepository : JpaRepository<Panne, Long> {
     fun findByAttractieId(attractieId: Long): List<Panne>
     fun findByResolvedFalse(): List<Panne>
+    fun findByAttractieIdAndResolvedTrue(attractieId: Long): List<Panne>
+
 
 
 }

@@ -17,9 +17,7 @@ class PanneService {
         val newPanne = Panne(
             id = null,
             description = panne.description,
-            beginDate = panne.beginDate,
-            endDate = panne.endDate,
-            resolved = false,
+            resolved = panne.resolved,
             attractieId = panne.attractieId,
             attractie = null
         )
@@ -49,7 +47,7 @@ class PanneService {
         return panneRepository.findByAttractieId(attractieId)
     }
 
-    fun getAllAttractionPannes(): Map<Long, Int> {
+    fun getAllAttractionPannes(): Map<Long?, Int> {
         return panneRepository.findAll()
             .filter { !it.resolved }
             .groupBy { it.attractieId }
