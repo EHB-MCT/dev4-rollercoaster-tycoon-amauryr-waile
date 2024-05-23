@@ -41,5 +41,4 @@
         fun deleteCategorie(@PathVariable id: Long) {
             categorieService.deleteCategorie(id)
         }
-
     }

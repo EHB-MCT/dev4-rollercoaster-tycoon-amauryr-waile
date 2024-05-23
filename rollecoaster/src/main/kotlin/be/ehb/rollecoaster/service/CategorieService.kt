@@ -1,25 +1,18 @@
 package be.ehb.rollecoaster.service
 
-
 import be.ehb.rollecoaster.model.Categorie
-import be.ehb.rollecoaster.repository.AttractieRepository
 import be.ehb.rollecoaster.repository.CategorieRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.slf4j.LoggerFactory
-
-
-
 import org.springframework.stereotype.Service
 
 @Service
 class CategorieService {
 
-
+    private val logger = LoggerFactory.getLogger(CategorieService::class.java)
 
     @Autowired
     lateinit var categorieRepository: CategorieRepository
-
-    private val logger = LoggerFactory.getLogger(CategorieService::class.java)
 
     fun getAllCategories(): List<Categorie> = categorieRepository.findAll()
 
@@ -39,7 +32,6 @@ class CategorieService {
         val existingCategorie = getCategorieById(id)
         return if (existingCategorie != null) {
             existingCategorie.naam = updatedCategorie.naam
-            // Update other properties as needed
             val savedCategorie = categorieRepository.save(existingCategorie)
             logger.info("Updated category: $savedCategorie")
             savedCategorie
@@ -60,7 +52,4 @@ class CategorieService {
             throw NoSuchElementException("Categorie with id $id not found")
         }
     }
-
-
-
 }

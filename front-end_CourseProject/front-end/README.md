@@ -1,35 +1,47 @@
-# front-end
+# Rollercoaster Management Application
 
-This template should help get you started developing with Vue 3 in Vite.
+This application is designed to manage rollercoasters, including their categories, maintenance schedules, and breakdowns. It provides a comprehensive system for creating, updating, deleting, and viewing rollercoasters and their associated information.
 
-## Recommended IDE Setup
+## Features
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- **Create, Read, Update, Delete (CRUD) operations for Rollercoasters**
+- **Category Management**
+- **Maintenance Scheduling and Tracking**
+- **Breakdown Tracking and Resolution**
+- **Dynamic Count of Breakdowns**
 
-## Customize configuration
+## Technologies Used
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- **Frontend**: Vue.js
+- **Backend**: Spring Boot
+- **Database**: H2
 
-## Project Setup
+## Sources and References
 
-```sh
-npm install
-```
+1. **Main Source**:
 
-### Compile and Hot-Reload for Development
+   - Cursus Dev4 Canvas: [Canvas](https://canvas.ehb.be)
 
-```sh
-npm run dev
-```
+2. **Frontend Error Handling**:
 
-### Compile and Minify for Production
+   - StackOverflow: [No 'Access-Control-Allow-Origin' header is present](https://stackoverflow.com/questions/43871637/no-access-control-allow-origin-header-is-present-on-the-requested-resource-whe)
 
-```sh
-npm run build
-```
+3. **Backend JSON Handling Errors**:
 
-### Lint with [ESLint](https://eslint.org/)
+   - Baeldung: [Jackson Bidirectional Relationships and Infinite Recursion](https://www.baeldung.com/jackson-bidirectional-relationships-and-infinite-recursion)
+   - StackOverflow: [Could not write JSON: Infinite recursion](https://stackoverflow.com/questions/47693110/could-not-write-json-infinite-recursion-stackoverflowerror-nested-exception)
 
-```sh
-npm run lint
-```
+4. **Backend Model and Bean Errors**:
+
+   - [Error Model Backend](https://stackoverflow.com/questions/4011472/mappedby-reference-an-unknown-target-entity-property)
+   - [Error Bean](https://stackoverflow.com/questions/40058001/error-creating-bean-with-name-entitymanagerfactory-defined-in-class-path-resou)
+   - [Development Blogs](https://blog.logrocket.com/)
+   - [Community Help](https://www.reddit.com/r/vuejs/)
+
+5. **General Error Handling and Debugging**:
+
+   - ChatGPT: For error handling
+
+6. **Front end in vue**:
+   - [vue.js](https://vuejs.org/guide/introduction)
+   - [W3Schools](https://www.w3schools.com/vue/index.php)

@@ -1,6 +1,5 @@
 package be.ehb.rollecoaster.controller
 
-import be.ehb.rollecoaster.dto.AttractieRequest
 import be.ehb.rollecoaster.dto.OnderhoudRequest
 import be.ehb.rollecoaster.model.Onderhoud
 import be.ehb.rollecoaster.service.OnderhoudService
@@ -38,6 +37,9 @@ class OnderhoudController{
     fun getOnderhoudsForAttractie(@PathVariable attractieId: Long): List<Onderhoud> {
         return onderhoudService.getOnderhoudsForAttractie(attractieId)
     }
+
+
+
     @GetMapping("/attractie/{attractieId}/next_onderhoud")
     fun getNextOnderhoudForAttractie(@PathVariable attractieId: LocalDate): String? {
         val nextOnderhoudDate = onderhoudService.getNextOnderhoudForAttractie(attractieId)

@@ -37,11 +37,8 @@
         @PostMapping("/create")
         @ResponseStatus(HttpStatus.CREATED)
         fun addAttractie(@RequestBody attractieRequest: AttractieRequest): Attractie {
-            logger.info("Received request to create attraction: $attractieRequest")
-
             val newAttractie = attractieService.addAttractie(attractieRequest)
             logger.info("Created new attraction: $newAttractie")
-
             return newAttractie
         }
 
@@ -66,7 +63,4 @@
         fun getNumberOfPannesForAttractie(@PathVariable id: Long): Long {
             return attractieService.getNumberOfPannesForAttractie(id)
         }
-
-
-
     }

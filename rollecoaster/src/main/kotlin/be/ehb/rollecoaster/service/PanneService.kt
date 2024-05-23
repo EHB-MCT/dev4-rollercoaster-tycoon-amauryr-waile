@@ -1,6 +1,5 @@
 package be.ehb.rollecoaster.service
 
-
 import be.ehb.rollecoaster.dto.PanneRequest
 import be.ehb.rollecoaster.model.Panne
 import be.ehb.rollecoaster.repository.PanneRepository
@@ -23,9 +22,6 @@ class PanneService {
         )
 
         return panneRepository.save(newPanne)
-
-
-
     }
 
     fun markPanneAsResolved(id: Long) {

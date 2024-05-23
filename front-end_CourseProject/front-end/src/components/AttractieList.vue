@@ -4,9 +4,9 @@
     <ul class="attractie-list">
       <li v-for="attractie in attracties" :key="attractie.id" class="attractie-item">
         <div>
-          <h3 :class="{ breakdown: hasUnresolvedPannes(attractie.pannes) }">
+          <h2 :class="{ breakdown: hasUnresolvedPannes(attractie.pannes) }">
             {{ attractie.naam }}
-          </h3>
+          </h2>
           <p><strong>Capacity:</strong> {{ attractie.capaciteit }}</p>
           <p>
             <strong>Category:</strong>
@@ -14,7 +14,7 @@
           </p>
           <p><strong>Year of construction:</strong> {{ attractie.bouwjaar }}</p>
           <p><strong>Length:</strong> {{ attractie.lengte }} meters</p>
-          <p><strong>Time:</strong> {{ attractie.tijdsduur }} minutes</p>
+          <p><strong>Time:</strong> {{ attractie.tijdsduur }} seconds</p>
           <p><strong>Max height:</strong> {{ attractie.maximumHoogte }} meters</p>
           <p><strong>Max speed:</strong> {{ attractie.maximumSnelheid }} km/h</p>
 

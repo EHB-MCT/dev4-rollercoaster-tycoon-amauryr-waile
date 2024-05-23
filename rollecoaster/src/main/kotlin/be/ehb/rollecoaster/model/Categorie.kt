@@ -14,4 +14,3 @@ data class Categorie(
     @JsonBackReference
     var attracties: MutableList<Attractie> = mutableListOf()
 )
-{}

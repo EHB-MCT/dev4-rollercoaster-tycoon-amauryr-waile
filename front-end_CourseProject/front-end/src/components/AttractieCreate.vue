@@ -12,11 +12,14 @@
       </div>
       <div class="form-group">
         <label for="categorie">Category:</label>
-        <select v-model="selectedCategorie" id="categorie">
-          <option v-for="categorie in categories" :key="categorie.id" :value="categorie">
-            {{ categorie.naam }}
-          </option>
-        </select>
+        <div class="categorie-selection">
+          <select v-model="selectedCategorie" id="categorie">
+            <option v-for="categorie in categories" :key="categorie.id" :value="categorie">
+              {{ categorie.naam }}
+            </option>
+          </select>
+          <button type="button" @click="showCategoryModal = true">Add Category</button>
+        </div>
       </div>
       <div class="form-group">
         <label for="bouwjaar">Year of construction:</label>
@@ -55,9 +58,21 @@
         <button type="button" @click="removeOnderhoud(index)">Remove</button>
       </div>
       <button type="button" @click="addOnderhoud">Add Maintenance Date</button>
-
       <button type="submit">Create</button>
     </form>
+    <div v-if="showCategoryModal" class="modal-overlay">
+      <div class="modal-container">
+        <h2>Create Category</h2>
+        <form @submit.prevent="createCategorie" class="categorie-form">
+          <div class="form-group">
+            <label for="newCategorieNaam">Name of category:</label>
+            <input type="text" id="newCategorieNaam" v-model="newCategorieNaam" required />
+          </div>
+          <button type="submit">Create</button>
+          <button type="button" @click="showCategoryModal = false">Close</button>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -79,7 +94,9 @@ export default {
       },
       categories: [],
       selectedCategorie: null,
-      onderhouds: []
+      onderhouds: [],
+      showCategoryModal: false,
+      newCategorieNaam: ''
     }
   },
   methods: {
@@ -129,6 +146,30 @@ export default {
         console.error('Error creating the rollercoaster or maintenance:', error)
       }
     },
+    async createCategorie() {
+      try {
+        const response = await fetch('http://localhost:9000/categories/create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ naam: this.newCategorieNaam })
+        })
+
+        if (!response.ok) {
+          throw new Error(`Error creating category: ${response.statusText}`)
+        }
+
+        const newCategorie = await response.json()
+        console.log('New category created:', newCategorie)
+        this.categories.push(newCategorie)
+        this.newCategorieNaam = ''
+        this.showCategoryModal = false
+      } catch (error) {
+        console.error('Error creating category:', error)
+        alert('Error creating category. Try Again.')
+      }
+    },
     async loadCategories() {
       try {
         const response = await fetch('http://localhost:9000/categories/all')
@@ -166,13 +207,14 @@ export default {
 
 .form-group {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   margin-bottom: 12px;
 }
 
 .form-group label {
   flex: 1;
-  margin-right: 25px;
+  margin-right: 10px;
+  text-align: right;
 }
 
 .form-group input,
@@ -195,5 +237,42 @@ button {
 
 button:hover {
   background-color: #5c5c5c;
+}
+
+.categorie-selection {
+  display: flex;
+  align-items: center;
+  flex: 2;
+  padding: 0;
+}
+
+.categorie-selection select {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.categorie-selection button {
+  padding: 10px 16px;
+  flex: 0 0 auto;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 100%;
 }
 </style>

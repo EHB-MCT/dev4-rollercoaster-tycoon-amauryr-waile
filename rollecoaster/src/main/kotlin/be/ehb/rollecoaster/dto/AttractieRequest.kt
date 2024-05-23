@@ -1,6 +1,6 @@
 package be.ehb.rollecoaster.dto
 
-import java.util.*
+
 
 
 data class AttractieRequest(
